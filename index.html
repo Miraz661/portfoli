@@ -1,0 +1,158 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IQRACS</title>
+    <link rel="shortcut icon" href="logo2.png" type="image/icon" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <nav class="navigation">
+      <div class="navTitle">
+        <h2>Md Miraz Hossain</h2>
+      </div>
+      <div class="navMenu">
+        <div class="toggle"><span></span></div>
+        <ul class="menuList">
+          <li style="--menu-value: 0"><a href="#home">Home</a></li>
+          <li style="--menu-value: 1"><a href="#skill">Skill</a></li>
+          <li style="--menu-value: 2"><a href="#work">Work</a></li>
+          <li style="--menu-value: 3"><a href="#blog">Blog</a></li>
+          <li style="--menu-value: 4"><a href="#about">About Me</a></li>
+          <li style="--menu-value: 5"><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main">
+      <section id="home"></section>
+      <section id="blog">
+        <div class="container">
+          <div class="blog">
+            <div class="blog1">
+              <h2 class="blog1Head">Merge sort using recursion</h2>
+              <div class="blog1Body">
+                <ul>
+                  <li>
+                    <details>
+                      <summary>Explanation</summary>
+                      <p>
+                        মার্জ সর্ট (Merge sort) একটি গুরুত্বপূর্ণ সর্টিং
+                        অ্যালগরিদম (Sorting algorithm) যা টাইম
+                        কম‌প্লে‌ক্সি‌টি‌তে একটি অ্যারেকে সর্ট করতে পারে। এটি
+                        একটি ভাগ করো শাসন করো বা Divide and conquer অ্যালগরিদম
+                        যেখানে রিকার্শনের মাধমে একটি অ্যারেকে প্র‌তিবা‌রে
+                        দুইভাগে বিভক্ত করে আলদা আলাদা করে সর্ট করা হয়। তারপর
+                        অংশগুলোকে মার্জ করলে একটি সর্টেড অ্যারে পাওয়া যায়।
+                        <span></span>
+                        আগেই বলেছি মার্জ সর্ট একটি ভাগ করো শাসন করো বা Divide
+                        and conquer অ্যালগরিদম। এটি কিভাবে কাজ করে একটু বুঝার
+                        চেস্টা করি। ধরা যাক আপনাকে দায়িত্ব দেয়া হলো ১০ টি
+                        সংখ্যাকে ছোট থেকে বড় আকারে সাজিয়ে দিতে। আপনি এই কাজটি
+                        আপনার দুইজন বন্ধু A এবং B কে ভাগ করে দিলেন, A কে বললেন
+                        তুই আমাকে 0 থেকে 4 ইনডেক্স পর্যন্ত সর্ট করে দে, আর B কে
+                        বললেন তুই আমাকে 5 থেকে 9 পর্যন্ত ইনডেক্স সর্ট করে দে।
+                        <span></span>
+                        এখন A এর C এবং D নামে দুইজন বন্ধু আছে ধরি। A, C কে বলল দোস্ত আমাকে তুই l=0 থেকে r=2 পর্যন্ত সর্ট করে দে। D কে বলল তুই আমাকে l=3 থেকে r=4 পর্যন্ত সর্ট করে দে। এভাবে C এবং D তাদের বন্ধুদের ভাগ করে দিতে থাকলো। একসময় দেখা যাবে অ্যারের সাইজ ১ হয়ে গেছে। তখন কিন্তু অ্যারেটা সর্টেড। কারন ১ উপাদান আছে বিশিষ্ট অ্যারে সবসময় সর্টেড। নিচের চিত্রে H এর কাজ এখানেই শেষ। কিন্তু G আবার দুইভাগ করে নতুন দুইজন কে সর্ট করে দিতে বলবে।এভাবে ভাগ করতে করতে যখন আমরা বেস কেসে (Base case) বা অ্যারের সাইজ ১ এই অবস্থায় যাবো আমরা রিটার্ন দেয়া শুরু করবো।
+                        <span></span>
+                        ধরি A এর বন্ধু C এবং D তাদের দেয়া অ্যারেটি সর্ট করে ফেলেছে। এখন C এবং D তাদের অংশকে বন্ধু A এর কাছে দিবে, যেহেতু A তাদের এই কাজটি দিয়েছিলো। এখন A এর কাজটি হলো সর্টেড অ্যারে দুটিকে মার্জ করা (Merge করার কাজটি C এবং D কেও করতে হয়েছিলো, কারন তারাও তাদের বন্ধুদের ভাগ করে দিয়েছিলো তাদের কাজটি) এবং তাকে আপনার কাছে রিটার্ন করা।
+                        <span></span>
+                        প্রথমে আমরা একটি অ্যারেকে ভাগ করতে করতে একটি একটি ইলিমেন্ট বিশিষ্ট অবস্থায় নিয়ে এসেছি। তারপর দ্বিতীয় অংশে আমরা দুইটি অ্যারেকে মার্জ করার মাধ্যমে একটি সর্টেড অ্যারেতে পরিনত করেছি। এখানে লক্ষণীয় যে মার্জ করার সময় আমরা দুইটি সর্টেড অ্যারেকে মার্জ করেছি।
+                      </p>
+                    </details>
+                  </li>
+                  <li>
+                    <details>
+                      <summary>Source Code :</summary>
+                      <pre>
+#include<span><</span>bits/stdc++.h>
+using namespace std;
+
+
+void Merge(int *arr, int s, int e)<span>{</span>
+    int mid = (s+e)/2;
+
+    int len1=mid-s+1;
+    int len2=e-mid;
+
+    int *first = new int[len1];
+    int *second = new int[len2];
+
+    int mindex = s;
+    for(int i=0;i<span><</span>len1;i++)<span>{</span>
+        first[i]=arr[mindex++];
+    }
+    for(int i=0;i<span><</span>len2;i++)<span>{</span>
+        second[i]=arr[mindex++];
+    }
+
+
+    int index1 = 0;
+    int index2 = 0;
+    mindex = s;
+
+    while(index1<span><</span>len1 && index2 <span><</span>len2)<span>{</span>
+        if(first[index1]<span><</span>second[index2])<span>{</span>
+            arr[mindex++]=first[index1++];
+        }else{
+            arr[mindex++]=second[index2++];
+        }
+    }
+    while(index1<span><</span>len1)<span>{</span>
+        arr[mindex++]=first[index1++];
+    }
+    while(index2<span><</span>len2)<span>{</span>
+        arr[mindex++]=second[index2++];
+    }
+
+    delete []first;
+    delete []second;
+}
+
+
+
+void mergeSort(int *arr, int s, int e)<span>{</span>
+    if(s<span><</span>=e)<span>{</span>
+        return;
+    }
+    int mid = (s+e)/2;
+    mergeSort(arr,s,mid);
+    mergeSort(arr,mid+1,e);
+
+    Merge(arr,s,e);
+}
+
+
+
+
+
+int main()<span>{</span>
+    int arr[]=<span>{</span>10,45,5,17,2,9,41,50,0,12};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    mergeSort(arr,0,n-1);
+    for(int i=0;i<span><</span>n;i++)<span>{</span>
+        cout<span><<</span>arr[i]<span><<</span>" ";
+        <span>}</span>cout<span><<</span>endl;
+    return 0;
+<span>}</span>
+
+</pre
+                      >
+                    </details>
+                  </li>
+                  <!-- <li>
+                                    <details>
+                                        <summary>Graphical representation</summary>
+                                        
+                                    </details>
+                                </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
