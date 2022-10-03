@@ -164,6 +164,18 @@ details p span{
 
                             /* Media quarys */
 
+
+@media screen and (max-width: 500px) {
+    .navTitle{
+        display: none;
+    }
+    .navigation{
+        justify-content: center;
+    }
+}
+
+
+
 @media screen and (max-width: 600px){
     .container{
         padding: 50px 10px;
